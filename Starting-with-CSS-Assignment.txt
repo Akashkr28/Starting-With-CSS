@@ -1,0 +1,114 @@
+1. What is CSS and why use it
+
+Ans:-
+	CSS stands for Cascading Style Sheets. It is a stylesheet language used for describing the presentation and 	formatting of a document written in HTML (Hypertext Markup Language). CSS allows web developers to control the 	layout, appearance, and design of web pages, making it an essential technology for web development. CSS is used 	for:
+
+	1. Separation of Content and Presentation: CSS enables the separation of content (HTML) from its presentation 	(styles). This separation makes it easier to maintain and update web pages because changes to the design can be 	made without altering the underlying content.
+
+	2. Consistency: CSS allows you to define styles once and apply them consistently across multiple web pages. 
+
+	3. Efficiency: CSS enables developers to write efficient and compact code. By using classes and IDs to target 	elements, you can apply styles to multiple elements at once, reducing the need for repetitive code.
+
+	4. Responsive Design: CSS plays a crucial role in creating responsive web designs that adapt to different screen 	sizes and devices. 
+
+	5. Browser Compatibility: CSS helps address the challenge of rendering web pages consistently across different 	web browsers. By using standardized CSS properties and techniques, you can ensure that your website works well on 	various browsers, reducing compatibility issues.
+
+	6. Accessibility: CSS allows you to enhance the accessibility of your web content. You can use CSS to create 	visually appealing designs while ensuring that your website remains usable and navigable for people with 	disabilities who rely on screen readers or other assistive technologies.
+
+	7. Animation and Interactivity: CSS includes features for creating animations and interactive elements without 	relying on JavaScript or other scripting languages. This can enhance user engagement and add visual interest to 	your web pages.
+
+	8. Print Styling: CSS can be used to define styles specifically for printed documents, ensuring that your web 	pages look good when users print them.
+
+	In summary, CSS is a powerful tool that is essential for web development because it provides a systematic and 	efficient way to control the visual aspects of web pages. 
+
+2. What are the different ways to bring CSS into an HTML file?
+
+Ans:-
+	There are several ways to bring CSS styles into an HTML file. Each method has its own use case and advantages. 	Here are the most common ways to apply CSS to HTML:
+
+	1. Inline CSS:
+ 	 - Inline CSS involves including the CSS styles directly within the HTML elements using the `style` attribute. 	For example:
+  
+  	 <p style="color: blue; font-size: 16px;">This is a blue text with a font size of 16px.</p>
+   
+	Inline CSS is useful for applying specific styles to individual elements, but it can make the HTML code less 	maintainable when used extensively.
+
+	2. Internal CSS:
+   	- Internal CSS, also known as embedded CSS, is defined within the `<style>` element in the `<head>` section of an 	HTML document. It applies styles to elements on that specific page. For example:
+
+   <head>
+     <style>
+       p {
+         color: blue;
+         font-size: 16px;
+       }
+     </style>
+   </head>
+   <body>
+     <p>This is a blue text with a font size of 16px.</p>
+   </body>
+
+	Internal CSS is useful when you want to apply styles to a single HTML document.
+
+	3. External CSS:
+   	- External CSS is the most common and recommended way to apply styles to HTML. It involves creating a separate 	CSS file with a `.css` extension and linking it to your HTML document using the `<link>` element in the `<head>` 	section. For example:
+
+   <head>
+     <link rel="stylesheet" type="text/css" href="styles.css">
+   </head>
+   <body>
+     <p>This is a blue text with a font size of 16px.</p>
+   </body>
+
+ 	This method allows you to centralize your styles in one file and apply them to multiple HTML pages, promoting 	maintainability and consistency.
+
+	The choice of which method to use depends on the project's requirements and your preferred coding style.
+
+3. What do you mean by specificity in CSS?
+
+Ans:-
+	Specificity in CSS refers to the rules and criteria that determine which CSS styles are applied to an HTML 	element when multiple conflicting styles are defined. It is a crucial concept for understanding how browsers 	decide which styles to prioritize when there are competing CSS declarations. Specificity helps ensure that styles 	are applied predictably and consistently.
+
+	Specificity is calculated based on a set of rules, and a selector's specificity value determines its weight in 	the style cascade. The higher the specificity value, the more specific and influential the selector is in 	determining the final styles for an element. Here's how specificity is calculated and applied:
+
+	1. Specificity Hierarchy:
+
+   	Specificity is usually expressed as a four-part value, like `a, b, c, d`, where:
+		- `a` represents the number of inline styles (styles defined directly on an HTML element using the 				`style` attribute).
+		- `b` represents the number of IDs (e.g., `#myElement`) in the selector.
+		- `c` represents the number of classes, attributes, and pseudo-classes (e.g., `.myClass`, 					`[type="text"]`, `:hover`) in the selector.
+		- `d` represents the number of element type selectors (e.g., `div`, `p`, `a`) and pseudo-elements (e.g., 			`::before`, `::after`) in the selector.
+
+   	The specificity value is compared from left to right, and the first selector with the highest value "wins" and 	determines the applied styles.
+
+	2. Importance:
+
+  	 The `!important` flag can be added to a CSS declaration to give it the highest specificity possible. Any style 	marked as `!important` will override other conflicting styles, regardless of their specificity. However, it's 	generally recommended to use `!important` sparingly because it can lead to maintenance challenges.
+
+	3. Order of Declaration:
+
+ 	If two conflicting styles have the same specificity, the one declared later in the CSS file or in the HTML 	(inline styles) takes precedence. This is known as the "cascading" nature of CSS.Here's an example to illustrate 	specificity:
+
+	
+<style>
+  p {
+    color: blue; /* specificity: 0,0,1,0 */
+  }
+
+  .special {
+    color: red; /* specificity: 0,0,0,1 */
+  }
+
+  #myPara {
+    color: green !important; /* specificity: 0,1,0,0 (highest specificity due to ID and !important) */
+  }
+</style>
+
+<p class="special" id="myPara" style="color: yellow;">This is some text.</p>
+
+	In this example, the text inside the `<p>` element will appear green because the `#myPara selector` has the 	highest specificity due to the ID and the `!important` flag
+	
+	Understanding CSS specificity is essential for avoiding unexpected styling conflicts and ensuring that your 	styles are applied as intended. It's a key part of mastering CSS and creating maintainable and predictable web 	designs.
+
+
+
